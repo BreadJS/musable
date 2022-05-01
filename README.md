@@ -12,3 +12,10 @@ Currently it has support for the following file types:
 ```
 mp3, flac, wav, ogg
 ```
+
+## Default user information
+When the users object inside `database.json` is not created. It will automaticly create one for you including an `admin` user. You can remove this or use it. You can login with the following information.
+```
+Username: admin
+Password: admin
+```
