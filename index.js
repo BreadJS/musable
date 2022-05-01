@@ -37,10 +37,10 @@ console.clear();
 logger.log(logger.INFO, 'General', `Musable v${package.version}`)
 
 /* Check database values */
-try {
-  db.getData('/songs');
-} catch(e) {
-  db.push('/songs', []);
+try { db.getData('/songs'); } catch(e) { db.push('/songs', []); }
+try { db.getData('/users'); } catch(e) {
+  db.push('/users', {});
+  db.push('/users/admin', { id: 1, password: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', rank: 'admin' });
 }
 
 /* Show total songs in terminal */
