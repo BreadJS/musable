@@ -56,7 +56,7 @@ function addSongToDB(songName, folderName, ignore) {
   db.push('/songs', currentSongs);
 }
 
-/* Music scanner files */
+/* Scan music folders */
 function musicScanner() {
   logger.log(logger.INFO, 'Scanner', `Music scanner started...`);
   const options = {
@@ -103,7 +103,7 @@ function musicScanner() {
   dree.scan('Z:/Music', options, fileCallback, dirCallback);
 }
 
-/* Process metadata */
+/* Process metadata of songs in database */
 function processMetadata() {
   (async () => {
     try {
