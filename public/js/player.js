@@ -1,4 +1,6 @@
-var audioPlayer = new Audio();
+let audioPlayer = new Audio();
+audioPlayer.volume = 0.5;
+
 let playState = false;
 let mouseDownOnProgress = false;
 
@@ -6,27 +8,54 @@ const progressAudioDom = document.getElementById('progressAudio');
 const volumeAudioDom = document.getElementById('volumeAudio');
 const currentTimeDom = document.getElementById('currentTime');
 const totalTimeDom = document.getElementById('totalTime');
+const songNameMobileDom = document.getElementById('songNameMobile');
+
+const playPauseIconDom = document.getElementById('playPauseIcon');
+const volumeMuteIconDom = document.getElementById('volumeMuteIcon');
+
+
 
 /* Play pause function */
 function playAudio() {
   if(playState) {
     audioPlayer.pause();
     playState = false;
+    playPauseIconDom.classList = "fas fa-play btnPlayIcon";
+    playPauseIconDom.style.left = "1px;"
   } else {
     audioPlayer.play();
     playState = true;
+    playPauseIconDom.classList = "fas fa-pause btnPauseIcon";
+    playPauseIconDom.style.left = "0px;"
   }
 }
 
 /* Play song function */
-function playSong(id) {
+async function playSong(id) {
   /* Set url to audio element */
   audioPlayer.src = api_url + "/api/playFile/" + parseInt(id);
 
   /* Play and set play state */
   audioPlayer.play();
   playState = true;
+  playPauseIconDom.classList = "fas fa-pause btnPauseIcon";
+  playPauseIconDom.style.left = "0px;"
+
+  let test = await getSongData(id);
+  songNameMobileDom.innerHTML = test.file;
 }
+
+/* Mute function */
+function muteAudio() {
+  if(audioPlayer.volume == 0) {
+    audioPlayer.volume = 0.5;
+    volumeMuteIconDom.classList = "fas fa-volume-up";
+  } else {
+    audioPlayer.volume = 0;
+    volumeMuteIconDom.classList = "fas fa-volume-mute volumeMutedIcon";
+  }
+}
+
 
 
 /* Time progress updates event on Audio */
@@ -65,6 +94,19 @@ audioPlayer.addEventListener("loadeddata", () => {
 audioPlayer.addEventListener("ended", () => {
   console.log('song ended')
 });
+
+/* Volume change event on Audio */
+audioPlayer.addEventListener("volumechange", () => {
+  if(audioPlayer.volume == 0) {
+    volumeAudioDom.value = (audioPlayer.volume * 100).toFixed(0);
+    volumeMuteIconDom.classList = "fas fa-volume-mute volumeMutedIcon";
+  } else {
+    volumeAudioDom.value = (audioPlayer.volume * 100).toFixed(0);
+    volumeMuteIconDom.classList = "fas fa-volume-up";
+  }
+});
+
+
 
 /* Mouse down event on progress bar */
 progressAudioDom.addEventListener("mousedown", () => {
