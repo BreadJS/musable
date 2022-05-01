@@ -19,31 +19,34 @@
 
     <div class="row">
       <div class="col-12">
-        <div id="songs">
-
-        </div>
+        <div id="songs"></div>
       </div>
     </div>
 
     <div class="bottom-player">
       <div class="row mx-0">
-        <div class="col-3 px-0"></div>
-        <div class="col-6 px-0">
+        <div class="col-1 col-md-3 px-0"></div>
+        <div class="col-10 col-md-6 px-0">
           <center>
-            <button class="btn btn-secondary" onclick="nextAudio()"><</button>
-            <button class="btn btn-secondary" onclick="playAudio()">PP</button>
-            <button class="btn btn-secondary" onclick="backAudio()">></button>
+            <button class="btn btn-next" onclick="nextAudio()"><i class="fas fa-step-backward"></i></button>
+            <button class="btn btn-play" onclick="playAudio()"><i class="fas fa-play btnPlayIcon" id="playPauseIcon"></i></button>
+            <button class="btn btn-back" onclick="backAudio()"><i class="fas fa-step-forward"></i></button>
             <br>
-            <div class="d-flex">
-              <span id="currentTime">0:00</span>
-              <input type="range" class="form-range" value="0" min="0" max="200" id="progressAudio">
-              <span id="totalTime">0:00</span>
+            <div class="d-flex seekDiv">
+              <span id="currentTime" class="currentTime">0:00</span>
+              <input type="range" class="slider seekBarAudio" value="0" min="0" max="200" id="progressAudio">
+              <span id="totalTime" class="totalTime">0:00</span>
             </div>
           </center>
         </div>
-        
-        <div class="col-3 px-0 text-end" style="padding-right: 27px!important;"><br>
-          <input style="width:100px" type="range" class="form-range" value="100" min="0" max="100" id="volumeAudio">
+        <div class="col-12 col-md-3 px-0 text-end" style="padding-right: 27px!important;"><br>
+          <div class="f-flex">
+            <div class="text-start songNameMobile" id="songNameMobile">
+              -
+            </div>
+            <i class="fas fa-volume-up" id="volumeMuteIcon" onclick="muteAudio()"></i>
+            <input type="range" class="slider volumeBarAudio" value="50" min="0" max="100" id="volumeAudio">
+          </div>
         </div>
       </div>
     </div>
