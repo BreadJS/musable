@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <title>Musable</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <main class="container-fluid main-container-fluid">
+
+    <div class="row">
+      <div class="col-12">
+        <div id="songs">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-player">
+      <div class="row mx-0">
+        <div class="col-3 px-0"></div>
+        <div class="col-6 px-0">
+          <center>
+            <button class="btn btn-secondary" onclick="nextAudio()"><</button>
+            <button class="btn btn-secondary" onclick="playAudio()">PP</button>
+            <button class="btn btn-secondary" onclick="backAudio()">></button>
+            <br>
+            <div class="d-flex">
+              <span id="currentTime">0:00</span>
+              <input type="range" class="form-range" value="0" min="0" max="200" id="progressAudio">
+              <span id="totalTime">0:00</span>
+            </div>
+          </center>
+        </div>
+        
+        <div class="col-3 px-0 text-end" style="padding-right: 27px!important;"><br>
+          <input style="width:100px" type="range" class="form-range" value="100" min="0" max="100" id="volumeAudio">
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/player.js"></script>
+</body>
+</html>

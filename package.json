@@ -1,0 +1,23 @@
+{
+  "name": "musable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon -w *.js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DevvCat",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dree": "^3.3.7",
+    "express": "^4.18.0",
+    "music-metadata": "^7.12.3",
+    "node-json-db": "^0.7.5",
+    "nodemon": "^2.0.16"
+  }
+}

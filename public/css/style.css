@@ -1,0 +1,45 @@
+body {
+  background-color:#121212;
+  color:#fff;
+}
+
+main {
+  margin-top: 15px;
+}
+
+.navbar-brand img {
+  height: 29px;
+  margin-bottom: -8px;
+  margin-top: -12px;
+}
+
+.navbar-bg-dark {
+  background-color:#1F1F1F;
+}
+
+.card {
+  background-color:#1E1E1E;
+}
+
+.card .card-header {
+  font-weight:bold;
+  color:#efefef;
+  background-color:#1a1a1a;
+}
+
+.card .card-body {
+  color:#ffffff;
+}
+
+.bottom-player {
+  position: fixed;
+  background-color: #262626;
+  bottom: 0px;
+  left: 0px;
+  width:100%;
+  padding: 13px 0px;
+}
+
+.main-container-fluid {
+  margin-bottom:100px;
+}
