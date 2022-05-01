@@ -147,7 +147,7 @@ app.get('/api/playFile/:id', function(req, res) {
   var id = req.params.id;
 
   let currentSongs = db.getData('/songs');
-  let music = "Z:/Music" + currentSongs[parseInt(id)].folder + currentSongs[parseInt(id)].file;
+  let music = currentSongs[parseInt(id)].location + currentSongs[parseInt(id)].folder + currentSongs[parseInt(id)].file;
 
   var stat = fs.statSync(music);
   range = req.headers.range;
