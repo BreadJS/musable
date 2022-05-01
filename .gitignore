@@ -1,1 +1,5 @@
 node_modules
+.obsidian
+
+database.json
+database_backup.json
