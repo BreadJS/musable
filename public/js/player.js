@@ -9,6 +9,8 @@ const volumeAudioDom = document.getElementById('volumeAudio');
 const currentTimeDom = document.getElementById('currentTime');
 const totalTimeDom = document.getElementById('totalTime');
 const songNameMobileDom = document.getElementById('songNameMobile');
+const songNameDom = document.getElementById('songName');
+const songThumbnailDom = document.getElementById('songThumbnail');
 
 const playPauseIconDom = document.getElementById('playPauseIcon');
 const volumeMuteIconDom = document.getElementById('volumeMuteIcon');
@@ -41,8 +43,11 @@ async function playSong(id) {
   playPauseIconDom.classList = "fas fa-pause btnPauseIcon";
   playPauseIconDom.style.left = "0px;"
 
-  let test = await getSongData(id);
-  songNameMobileDom.innerHTML = test.file;
+  /* Get song data and thumbnail and set it */
+  let getSongDataD = await getSongData(id);
+  songThumbnailDom.src = api_url + `/api/getSongThumbnail/${id}`;
+  songNameMobileDom.innerHTML = `<span class="titlePlayer">${getSongDataD.title}</span><br><span class="artistPlayer">${getSongDataD.artist}</span>`;
+  songNameDom.innerHTML = `<span class="titlePlayer">${getSongDataD.title}</span><br><span class="artistPlayer">${getSongDataD.artist}</span>`;
 }
 
 /* Mute function */

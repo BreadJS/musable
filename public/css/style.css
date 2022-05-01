@@ -153,3 +153,42 @@ main {
   position:fixed;
   padding-left:14px;
 }
+
+.songName {
+  padding-left:10px;
+  line-height:17px;
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  left: -5px;
+}
+
+@media (min-width: 768px) {
+  .songNameMobile {
+    display:none;
+  }
+}
+
+@media (max-width: 768px) {
+  .songName {
+    display:none;
+  }
+}
+
+.titlePlayer {
+  font-size:14px;
+  color:#fff;
+}
+
+.artistPlayer {
+  font-size:11px;
+  color:#b3b3b3;
+}
+
+.songThumbnail {
+  height: 53px;
+  display: inline-flex;
+  position:relative;
+  top:6px;
+  margin-left: 15px;
+}

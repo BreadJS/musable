@@ -25,8 +25,13 @@
 
     <div class="bottom-player">
       <div class="row mx-0">
-        <div class="col-1 col-md-3 px-0"></div>
-        <div class="col-10 col-md-6 px-0">
+        <div class="col-1 col-md-4 px-0">
+          <div class="songThumbnail">
+            <img src="" id="songThumbnail">
+          </div>
+          <div class="text-start songName" id="songName"></div>
+        </div>
+        <div class="col-10 col-md-4 px-0">
           <center>
             <button class="btn btn-next" onclick="nextAudio()"><i class="fas fa-step-backward"></i></button>
             <button class="btn btn-play" onclick="playAudio()"><i class="fas fa-play btnPlayIcon" id="playPauseIcon"></i></button>
@@ -39,7 +44,7 @@
             </div>
           </center>
         </div>
-        <div class="col-12 col-md-3 px-0 text-end" style="padding-right: 27px!important;"><br>
+        <div class="col-12 col-md-4 px-0 text-end" style="padding-right: 27px!important;"><br>
           <div class="f-flex">
             <div class="text-start songNameMobile" id="songNameMobile">
               -
