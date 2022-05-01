@@ -49,7 +49,7 @@ main {
 }
 
 .main-container-fluid {
-  margin-bottom:100px;
+  margin-bottom:150px; /* 100 for normal */
 }
 
 .slider {
