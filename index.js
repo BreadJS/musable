@@ -25,26 +25,27 @@ app.use(cors({
   ]
 }));
 
-let songLocations = [
-  "Z:/Music"
-];
-let songExtensions = ['mp3', 'flac', 'wav', 'ogg'];
-
 
 
 /* Clear terminal */
 console.clear();
 logger.log(logger.INFO, 'General', `Musable v${package.version}`)
 
-/* Check database values */
+/* Check database values and set them */
 try { db.getData('/songs'); } catch(e) { db.push('/songs', []); }
+try { db.getData('/settings/song_locations'); } catch(e) { db.push('/settings/song_locations', [ "Z:/Music" ]); }
+try { db.getData('/settings/song_extensions'); } catch(e) { db.push('/settings/song_extensions', ['mp3', 'flac', 'wav', 'ogg']); }
 try { db.getData('/users'); } catch(e) {
   db.push('/users', {});
   db.push('/users/admin', { id: 1, password: '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', rank: 'admin' });
 }
+let songLocations = db.getData('/settings/song_locations');
+let songExtensions = db.getData('/settings/song_extensions');
 
-/* Show total songs in terminal */
-logger.log(logger.INFO, 'Database', `Loaded '${db.getData('/songs').length}' songs`);
+/* Show database information */
+logger.log(logger.INFO, 'Database', `Loaded '${db.getData('/songs').length}' song(s)`);
+logger.log(logger.INFO, 'Database', `Loaded '${songLocations.length}' folder location(s)`);
+logger.log(logger.INFO, 'Database', `Loaded '${songExtensions.length}' song extension(s)`);
 
 
 
