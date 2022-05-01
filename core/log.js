@@ -39,6 +39,10 @@ module.exports = {
     /* Message Type Color */
     if(messageType == "General") {
       messageTypeColor = "#A49CCD";
+    } else if(messageType == "API") {
+      messageTypeColor = "#E88BDB";
+    } else if(messageType == "Database") {
+      messageTypeColor = "#92E88B";
     } else {
       messageTypeColor = "#8D9CA1";
     }
