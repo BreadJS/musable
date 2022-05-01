@@ -25,21 +25,27 @@ app.use(cors({
   ]
 }));
 
-/* Clear terminal */
-console.clear();
-logger.log(logger.INFO, 'General', `Musable v${package.version}`)
-
 let songLocations = [
   "Z:/Music"
 ];
 let songExtensions = ['mp3', 'flac', 'wav', 'ogg'];
 
 
+
+/* Clear terminal */
+console.clear();
+logger.log(logger.INFO, 'General', `Musable v${package.version}`)
+
+/* Check database values */
 try {
-  db.getData('/songs')
+  db.getData('/songs');
 } catch(e) {
-  db.push('/songs', [])
+  db.push('/songs', []);
 }
+
+/* Show total songs in terminal */
+logger.log(logger.INFO, 'Database', `Loaded '${db.getData('/songs').length}' songs`);
+
 
 
 /* Add song to databse */
@@ -48,10 +54,6 @@ function addSongToDB(songName, folderName, ignore) {
   currentSongs.push({ id: (currentSongs.length), file: songName, folder: folderName, ignore: ignore });
   db.push('/songs', currentSongs);
 }
-
-
-
-
 
 /* Music scanner files */
 function musicScanner() {
@@ -100,8 +102,6 @@ function musicScanner() {
   dree.scan('Z:/Music', options, fileCallback, dirCallback);
 }
 
-
-
 /* Process metadata */
 function processMetadata() {
   (async () => {
@@ -113,10 +113,10 @@ function processMetadata() {
     }
   })();
 }
-//processMetadata();
 
 
 
+/* Express: Play song */
 app.get('/api/playFile/:id', function(req, res) {
   var id = req.params.id;
 
@@ -158,8 +158,7 @@ app.get('/api/playFile/:id', function(req, res) {
   readStream.pipe(res);
 });
 
-
-
+/* Express: Get specific song information */
 app.get('/api/getSong/:id', function(req, res) {
   let id = req.params.id;
   
@@ -182,10 +181,19 @@ app.get('/api/getSong/:id', function(req, res) {
   }
 });
 
-
-
+/* Express: Get all songs information */
 app.get('/api/getAllSongs', function(req, res) {
   res.json(db.getData('/songs'));
+});
+
+/* Express: Scan all locations for music */
+app.get('/api/scanMusic', function(req, res) {
+  musicScanner();
+});
+
+/* Express: Process all metadata of the songs */
+app.get('/api/processMetadata', function(req, res) {
+  processMetadata();
 });
 
 
