@@ -117,6 +117,29 @@ function processMetadata() {
   })();
 }
 
+app.get('/api/getSongThumbnail/:id', async function(req, res) {
+  var id = req.params.id;
+
+  let currentSongs = db.getData('/songs');
+  let song = currentSongs[parseInt(id)].location + currentSongs[parseInt(id)].folder + currentSongs[parseInt(id)].file;
+
+  const metadata = await mm.parseFile(song);
+  
+  if("picture" in metadata.common) {
+    let img = Buffer.from(metadata.common.picture[0].data.toString('base64'), 'base64');
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Length': img.length
+    });
+    res.end(img);
+  } else {
+    res.writeHead(200, {
+      'Content-Type': 'image/png',
+      'Content-Length': noThumbnailBuffer.length
+    });
+    res.end(noThumbnailBuffer);
+  }
+});
 
 
 /* Express: Play song */
